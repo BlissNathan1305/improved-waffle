@@ -1,4 +1,4 @@
-const apiKey = 'YOUR_NEWS_API_KEY'; // Replace this with your actual API key
+const apiKey = '5c9f7f706cea4f1ba91f06e9d5d4910b'; // Replace this with your actual API key
 const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
 
 fetch(url)

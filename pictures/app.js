@@ -1,4 +1,4 @@
-const accessKey = 'YOUR_UNSPLASH_ACCESS_KEY'; // Replace with your key
+const accessKey = 'LOY15shesbccOBosFnrAEmOoaHeELomTNPbNDVXfimA'; // Replace with your key
 
 async function searchImages() {
   const query = document.getElementById('query').value;

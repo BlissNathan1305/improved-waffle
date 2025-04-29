@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Search Engine</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+    input[type="text"] { padding: 10px; width: 300px; font-size: 16px; }
+    button { padding: 10px 20px; font-size: 16px; }
+    img { margin-top: 20px; max-width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+  <h1>Simple Image Search</h1>
+  <input type="text" id="searchInput" placeholder="Enter object name...">
+  <button onclick="searchImage()">Search</button>
+  <div id="result"></div>
+
+  <script>
+    async function searchImage() {
+      const query = document.getElementById('searchInput').value;
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = "Searching...";
+
+      try {
+        const response = await fetch(`https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&pretty=1`);
+        const data = await response.json();
+
+        if (data.Image) {
+          resultDiv.innerHTML = `<img src="${data.Image}" alt="${query} image">`;
+        } else {
+          resultDiv.innerHTML = "No image found. Try another search.";
+        }
+      } catch (error) {
+        resultDiv.innerHTML = "Error fetching image.";
+        console.error(error);
+      }
+    }
+  </script>
+</body>
+</html>
+
